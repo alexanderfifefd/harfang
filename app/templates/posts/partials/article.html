@@ -1,6 +1,9 @@
 {% load app_extras comments_extras %}
 <div id="{{ post|element_id }}" class="flex my-4">
-    <div id="buttons" class="flex flex-col">{% include "partials/vote.html#form" with item=post %}</div>
+    <div id="buttons" class="flex flex-col">
+        {% include "partials/vote.html#form" with item=post %}
+        {% include "partials/interest.html#form" with item=post %}
+    </div>
     <article>
         <header>
             <a href="{% url 'posts:detail' post.id %}"

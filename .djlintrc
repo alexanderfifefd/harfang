@@ -1,0 +1,7 @@
+{
+  "indent": 4,
+  "line_length": 80,
+  "django_tags": ["load", "block", "endblock", "partialdef", "partial", "endpartialdef"],
+  "wrap_attributes": true,
+  "preserve": ["svg", "rect", "polygon"]
+}
