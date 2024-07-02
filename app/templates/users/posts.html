@@ -1,7 +1,5 @@
 {% extends "base_feed.html" %}
-
 {% load app_extras comments_extras static %}
-
 {% block feed %}
     <ul>
         {% for post in page_obj %}
@@ -18,9 +16,7 @@
                                 {{ age }} ago
                             {% endblocktranslate %}
                         </p>
-                        <p>
-                            {{ post.title|truncatewords:40 }}
-                        </p>
+                        <p>{{ post.title|truncatewords:40 }}</p>
                     </article>
                 </a>
             </li>

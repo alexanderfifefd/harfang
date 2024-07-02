@@ -1,9 +1,6 @@
 {% extends "base_page.html" %}
-
 {% block header %}
-    <h1>
-        {% include "partials/profile_link.html" with user=profile.user %}
-    </h1>
+    <h1>{% include "partials/profile_link.html" with user=profile.user %}</h1>
     {% if user == profile.user %}
         <p class="text-center sm:text-left">
             <a href="{% url 'users:profile_edit' user %}">{% translate "edit" %}</a>
@@ -16,12 +13,9 @@
         {% endblocktranslate %}
     </p>
 {% endblock header %}
-
 {% block content %}
     <div class="prose-sm sm:prose dark:prose-invert">
-        <p>
-            {{ profile.bio|linebreaks }}
-        </p>
+        <p>{{ profile.bio|linebreaks }}</p>
     </div>
     <div class="mb-4 sm:mb-6 tabs"
         role="tablist"

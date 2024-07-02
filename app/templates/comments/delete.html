@@ -1,10 +1,8 @@
 {% extends "base_page.html" %}
-
 {% block header %}
     {{ block.super }}
     {% include "comments/partials/article.html" %}
 {% endblock header %}
-
 {% block content %}
     <form method="post" action="{% url 'comments:delete' post.id %}">
         {% csrf_token %}
@@ -16,13 +14,9 @@
             {% endblocktranslate %}
         </p>
         <div class="flex">
-            <button>
-                {% translate "Confirm" %}
-            </button>
+            <button>{% translate "Confirm" %}</button>
             <a href="{% url 'comments:detail' post.id %}" class="no-anchor">
-                <button type="button">
-                    Cancel
-                </button>
+                <button type="button">Cancel</button>
             </a>
         </div>
     </form>

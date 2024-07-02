@@ -1,12 +1,9 @@
 {% extends "base_page.html" %}
-
 {% load app_extras comments_extras %}
-
 {% block header %}
     <a href="{% url 'posts:detail' comment.post.id %}">← {% translate "Return to" %} <em>{{ comment.post.titlex|truncatechars:80 }}</em></a>
     {{ block.super }}
 {% endblock header %}
-
 {% block content %}
     <div class="flex">
         {% include "partials/vote.html#form" with item=comment %}
@@ -16,7 +13,6 @@
         </div>
     </div>
 {% endblock content %}
-
 {% block discussion %}
     <div class="prose-sm sm:prose dark:prose-invert">
         <h2>

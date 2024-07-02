@@ -8,12 +8,8 @@
     <input type="hidden" name="body" value='"{{ metadata.description }}"'>
     <input type="hidden" name="image_url" value="{{ metadata.image_url }}">
     <input type="hidden" name="image_alt" value="{{ metadata.image_alt }}">
-    <button>
-        {% translate "Submit" %}
-    </button>
-    <button id="copy-data-btn" type="button">
-        {% translate "Copy to form" %}
-    </button>
+    <button>{% translate "Submit" %}</button>
+    <button id="copy-data-btn" type="button">{% translate "Copy to form" %}</button>
 </form>
 <article class="flex overflow-hidden flex-col prose-sm dark:prose-invert"
          id="url_preview">
@@ -28,25 +24,15 @@
     </header>
     <div class="p-2 grow">
         <hgroup>
-            {% if metadata.title %}
-                <h1>
-                    {{ metadata.title }}
-                </h1>
-            {% endif %}
+            {% if metadata.title %}<h1>{{ metadata.title }}</h1>{% endif %}
         </hgroup>
-        {% if metadata.description %}
-            <p>
-                {{ metadata.description }}
-            </p>
-        {% endif %}
+        {% if metadata.description %}<p>{{ metadata.description }}</p>{% endif %}
         <p>
             <a href="{{ metadata.url }}" target="_blank"><small>{{ metadata.site_name|default:metadata.url }}</small></a>
         </p>
     </div>
     <footer class="text-center">
-        <small class="muted">
-            {% translate "URL Preview" %}
-        </small>
+        <small class="muted">{% translate "URL Preview" %}</small>
     </footer>
 </article>
 <script>

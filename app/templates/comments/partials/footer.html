@@ -1,5 +1,4 @@
 {% load app_extras comments_extras %}
-
 <footer id="{{ comment|element_id }}-footer"
         class="text-sm muted"
         hx-push-url="false">
@@ -27,9 +26,7 @@
             <a hx-post="{% url 'comments:restore' comment.id %}"
                hx-target="#{{ comment|element_id }}-body"
                hx-select="#{{ comment|element_id }}-body"
-               hx-select-oob="#{{ comment|element_id }}-footer">
-                {% translate "restore" %}
-            </a>
+               hx-select-oob="#{{ comment|element_id }}-footer">{% translate "restore" %}</a>
         {% endif %}
     {% endif %}
     {% if not comment.is_leaf_node %}

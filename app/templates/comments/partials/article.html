@@ -1,5 +1,4 @@
 {% load app_extras comments_extras %}
-
 <article id="{{ comment|element_id }}">
     <header class="text-sm muted">
         {% points_count comment %}
@@ -26,8 +25,7 @@
             {% endif %}
         </p>
     </a>
-    <p id="{{ comment|element_id }}-edit-form-wrapper" hx-push-url="false">
-    </p>
+    <p id="{{ comment|element_id }}-edit-form-wrapper" hx-push-url="false"></p>
     {% if tree %}
         {% include "comments/partials/footer.html" %}
     {% endif %}

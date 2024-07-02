@@ -1,24 +1,15 @@
 {% extends "base_page.html" %}
-
 {% block content %}
-
     {% block menu %}
     {% endblock menu %}
-
     {% if page_obj.paginator.count == 0 %}
-        <p>
-            {% translate "No posts available." %}
-        </p>
+        <p>{% translate "No posts available." %}</p>
     {% else %}
         <div id="feed">
-
             {% block feed %}
             {% endblock feed %}
-
         </div>
-        <div id="spinner" class="flex justify-center">
-            {% include "partials/spinner.html" %}
-        </div>
+        <div id="spinner" class="flex justify-center">{% include "partials/spinner.html" %}</div>
         <div id="lazy-load-trigger">
             {% if page_obj.has_next %}
                 <div class="invisible"
@@ -29,13 +20,9 @@
                      hx-target="#feed"
                      hx-swap="beforeend"
                      hx-select="#feed"
-                     hx-select-oob="#lazy-load-trigger">
-                    :-)
-                </div>
+                     hx-select-oob="#lazy-load-trigger">:-)</div>
             {% else %}
-                <p class="tracking-widest leading-10 text-center sm:text-2xl">
-                    *⁎*
-                </p>
+                <p class="tracking-widest leading-10 text-center sm:text-2xl">*⁎*</p>
             {% endif %}
         </div>
     {% endif %}

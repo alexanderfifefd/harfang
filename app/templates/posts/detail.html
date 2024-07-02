@@ -1,5 +1,4 @@
 {% extends "base_page.html" %}
-
 {% block header %}
     {{ block.super }}
     <p>
@@ -12,17 +11,12 @@
         {% include "partials/profile_link.html" with user=post.user %}
         {% if user == post.user or user.is_moderator %}
             •
-            <a href="{% url 'posts:update' post.id %}">
-                {% translate "edit" %}
-            </a>
+            <a href="{% url 'posts:update' post.id %}">{% translate "edit" %}</a>
             •
-            <a href="{% url 'posts:delete' post.id %}">
-                {% translate "delete" %}
-            </a>
+            <a href="{% url 'posts:delete' post.id %}">{% translate "delete" %}</a>
         {% endif %}
     </p>
 {% endblock header %}
-
 {% block content %}
     <article class="prose-sm sm:prose dark:prose-invert">
         <p>
@@ -34,24 +28,17 @@
                      src="{{ post.image_url }}"
                      alt="Image for {{ post.title }}">
                 <figcaption class="text-center">
-                    <a href="{{ post.image_url }}" target="_blank" class="no-anchor">
-                        {{ post.image_url }}
-                    </a>
+                    <a href="{{ post.image_url }}" target="_blank" class="no-anchor">{{ post.image_url }}</a>
                 </figcaption>
             </figure>
         {% endif %}
-        <div class="mb-8 max-w-prose sm:mx-auto sm:mb-14 dark:prose-invert">
-            {{ post.body_html|safe }}
-        </div>
+        <div class="mb-8 max-w-prose sm:mx-auto sm:mb-14 dark:prose-invert">{{ post.body_html|safe }}</div>
     </article>
 {% endblock content %}
-
 {% block discussion %}
     {% if form %}
         <div class="prose-sm sm:prose dark:prose-invert">
-            <h2 id="comment-form">
-                {% translate "Leave a Comment" %}
-            </h2>
+            <h2 id="comment-form">{% translate "Leave a Comment" %}</h2>
         </div>
         {% include "comments/partials/discussion_form.html" %}
     {% endif %}

@@ -1,5 +1,4 @@
 {% load static %}
-
 <!DOCTYPE html>
 <html lang="en" class="font-sans">
     <head>
@@ -50,11 +49,9 @@
             updateTheme();
         </script>
         <title>
-
             {% block page_title %}
                 {{ page_title }}
             {% endblock page_title %}
-
             - Harfang
         </title>
     </head>
@@ -62,10 +59,8 @@
           hx-ext="preload"
           hx-boost="true"
           class="flex flex-col min-h-screen dark:text-gruv-fg dark:bg-gruv-bg">
-
         {% block body %}
         {% endblock body %}
-
         {% if debug %}
             <script>
                 if (typeof window.htmx !== "undefined") {

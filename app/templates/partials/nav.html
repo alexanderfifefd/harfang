@@ -1,5 +1,4 @@
 {% load static %}
-
 <nav class="py-1 px-2 mb-4 whitespace-nowrap sm:py-2 sm:px-4 sm:mb-10 bg-slate-300 dark:bg-gruv-950"
      preload="mouseover">
     <menu class="flex flex-wrap items-center space-x-2 sm:space-x-4 dark:text-gruv-fg">
@@ -19,15 +18,10 @@
                 <a href="{% url 'posts:submit' %}" class="no-anchor">{% translate "Submit" %}</a>
             </li>
         {% endif %}
-        <li class="grow">
-        </li>
-        <li>
-            {% include "partials/theme_toggle.html" %}
-        </li>
+        <li class="grow"></li>
+        <li>{% include "partials/theme_toggle.html" %}</li>
         {% if user.is_authenticated %}
-            <li>
-                {% include "partials/profile_link.html" with user=user %}
-            </li>
+            <li>{% include "partials/profile_link.html" with user=user %}</li>
             <li class="hidden sm:block">
                 <a hx-post="{% url 'logout' %}" hx-target="body" class="no-anchor">{% translate "Logout" %}</a>
             </li>

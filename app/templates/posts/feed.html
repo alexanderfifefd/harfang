@@ -1,5 +1,4 @@
 {% extends "base_feed.html" %}
-
 {% block menu %}
     {% if has_menu %}
         <div role="tabs"
@@ -10,61 +9,35 @@
                     role="tab"
                     aria-controls="feed"
                     aria-selected="false"
-                    class="tab-btn
-                           {% if range == 'day' %}
-                               selected
-                           {% endif %}"
-                    hx-get="{% url 'posts:top' 'day' %}">
-                {% translate "24h" %}
-            </button>
+                    class="tab-btn {% if range == 'day' %}selected{% endif %}"
+                    hx-get="{% url 'posts:top' 'day' %}">{% translate "24h" %}</button>
             <button type="button"
                     role="tab"
                     aria-controls="feed"
                     aria-selected="false"
-                    class="tab-btn
-                           {% if range == 'week' %}
-                               selected
-                           {% endif %}"
-                    hx-get="{% url 'posts:top' 'week' %}">
-                {% translate "Week" %}
-            </button>
+                    class="tab-btn {% if range == 'week' %}selected{% endif %}"
+                    hx-get="{% url 'posts:top' 'week' %}">{% translate "Week" %}</button>
             <button type="button"
                     role="tab"
                     aria-controls="feed"
                     aria-selected="false"
-                    class="tab-btn
-                           {% if range == 'month' %}
-                               selected
-                           {% endif %}"
-                    hx-get="{% url 'posts:top' 'month' %}">
-                {% translate "Month" %}
-            </button>
+                    class="tab-btn {% if range == 'month' %}selected{% endif %}"
+                    hx-get="{% url 'posts:top' 'month' %}">{% translate "Month" %}</button>
             <button type="button"
                     role="tab"
                     aria-controls="feed"
                     aria-selected="false"
-                    class="tab-btn
-                           {% if range == 'year' %}
-                               selected
-                           {% endif %}"
-                    hx-get="{% url 'posts:top' 'year' %}">
-                {% translate "Year" %}
-            </button>
+                    class="tab-btn {% if range == 'year' %}selected{% endif %}"
+                    hx-get="{% url 'posts:top' 'year' %}">{% translate "Year" %}</button>
             <button type="button"
                     role="tab"
                     aria-controls="feed"
                     aria-selected="false"
-                    class="tab-btn
-                           {% if range == 'all' %}
-                               selected
-                           {% endif %}"
-                    hx-get="{% url 'posts:top' 'all' %}">
-                {% translate "All-time" %}
-            </button>
+                    class="tab-btn {% if range == 'all' %}selected{% endif %}"
+                    hx-get="{% url 'posts:top' 'all' %}">{% translate "All-time" %}</button>
         </div>
     {% endif %}
 {% endblock menu %}
-
 {% block feed %}
     {% for post in page_obj %}
         {% include "posts/partials/article.html" %}

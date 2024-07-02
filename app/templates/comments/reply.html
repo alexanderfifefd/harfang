@@ -1,10 +1,5 @@
 {% extends "base_form.html" %}
-
 {% block form %}
-    <p class="my-4">
-        {% include "comments/partials/article.html" with comment=parent %}
-    </p>
-    <p class="my-4">
-        {% include "comments/form.html#form" %}
-    </p>
+    <p class="my-4">{% include "comments/partials/article.html" with comment=parent %}</p>
+    <p class="my-4">{% include "comments/form.html#form" %}</p>
 {% endblock form %}
