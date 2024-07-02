@@ -37,4 +37,3 @@ jobs:
     - name: Deploy to Server
       run: |
         ssh ${{ secrets.SERVER_USER }}@${{ secrets.SERVER_HOST }} "docker-compose pull && docker-compose up -d"
-

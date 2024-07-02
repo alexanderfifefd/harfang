@@ -41,9 +41,7 @@ def top(request, range="day"):
 
 def latest(request):
     yesterday = timezone.now() - timezone.timedelta(days=1)
-    posts = Post.objects.filter(submit_date__gte=yesterday).order_by(
-        "-submit_date"
-    )
+    posts = Post.objects.filter(submit_date__gte=yesterday).order_by("-submit_date")
     return TemplateResponse(
         request,
         "posts/feed.html",
@@ -157,9 +155,7 @@ def vote(request, pk):
     except PostVote.DoesNotExist:
         # create vote if not
         try:
-            PostVote(
-                user=request.user, post=post, submit_date=timezone.now()
-            ).save()
+            PostVote(user=request.user, post=post, submit_date=timezone.now()).save()
             status = 201
         except ValidationError as e:
             return HttpResponseForbidden(e)

@@ -26,9 +26,7 @@ class PostQuerySet(models.QuerySet):
         return self.filter(submit_date__gte=timezone.now() - timedelta(days=30))
 
     def year(self):
-        return self.filter(
-            submit_date__gte=timezone.now() - timedelta(days=365)
-        )
+        return self.filter(submit_date__gte=timezone.now() - timedelta(days=365))
 
     def top(self):
         return self.order_by("-points")
@@ -47,9 +45,7 @@ class Post(PointsMixin, models.Model):
         null=True,
         related_name="posts",
     )
-    title = models.CharField(
-        _("title"), max_length=settings.POST_TITLE_MAX_LENGTH
-    )
+    title = models.CharField(_("title"), max_length=settings.POST_TITLE_MAX_LENGTH)
     url = models.URLField(
         _("url"),
         blank=True,
@@ -114,9 +110,7 @@ class PostVote(Vote):
             models.UniqueConstraint(fields=["user", "post"], name="unique_vote")
         ]
 
-    post = models.ForeignKey(
-        Post, on_delete=models.CASCADE, related_name="votes"
-    )
+    post = models.ForeignKey(Post, on_delete=models.CASCADE, related_name="votes")
 
     def __str__(self):
         return f"{self.user} voted on {self.post}"

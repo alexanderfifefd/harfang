@@ -3,4 +3,3 @@ inputs:
     url: github:NixOS/nixpkgs/master
   nixpkgs-python:
     url: github:cachix/nixpkgs-python
-

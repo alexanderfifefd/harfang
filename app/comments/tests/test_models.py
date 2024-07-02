@@ -23,9 +23,7 @@ class TestCommentModel(TestCase):
         )
 
     def test_save(self):
-        c = Comment.objects.create(
-            user=self.user, body="test comment", post=self.post
-        )
+        c = Comment.objects.create(user=self.user, body="test comment", post=self.post)
         self.user.refresh_from_db()
         self.assertEqual(c.points, 0)
         self.assertEqual(self.user.points, 1)
@@ -54,18 +52,14 @@ class TestCommentModel(TestCase):
         )
 
     def test_body_cannot_be_blank(self):
-        with self.assertRaisesMessage(
-            ValidationError, "This field cannot be blank."
-        ):
+        with self.assertRaisesMessage(ValidationError, "This field cannot be blank."):
             Comment.objects.create(
                 user=self.user, body="", post=self.post
             ).clean_fields()
 
     def test_post_cannot_be_null(self):
         with self.assertRaises(IntegrityError):
-            Comment.objects.create(
-                user=self.user, body="test comment"
-            ).clean_fields()
+            Comment.objects.create(user=self.user, body="test comment").clean_fields()
 
     def test_clean_no_error(self):
         Comment.objects.create(

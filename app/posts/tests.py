@@ -194,16 +194,12 @@ class TestPostUpdateView(TestCase):
 
     def test_post_update_view(self):
         self.client.force_login(self.user)
-        resp = self.client.get(
-            reverse("posts:update", kwargs={"pk": self.post.pk})
-        )
+        resp = self.client.get(reverse("posts:update", kwargs={"pk": self.post.pk}))
         self.assertEqual(resp.status_code, 200)
 
     def test_post_update_view_template(self):
         self.client.force_login(self.user)
-        resp = self.client.get(
-            reverse("posts:update", kwargs={"pk": self.post.pk})
-        )
+        resp = self.client.get(reverse("posts:update", kwargs={"pk": self.post.pk}))
         self.assertTemplateUsed(resp, "base_form.html")
 
     def test_post_update_view_redirects(self):
@@ -281,16 +277,12 @@ class TestPostDeleteView(TestCase):
 
     def test_post_delete_view(self):
         self.client.force_login(self.user)
-        resp = self.client.get(
-            reverse("posts:delete", kwargs={"pk": self.post.pk})
-        )
+        resp = self.client.get(reverse("posts:delete", kwargs={"pk": self.post.pk}))
         self.assertEqual(resp.status_code, 200)
 
     def test_post_delete_view_template(self):
         self.client.force_login(self.user)
-        resp = self.client.get(
-            reverse("posts:delete", kwargs={"pk": self.post.pk})
-        )
+        resp = self.client.get(reverse("posts:delete", kwargs={"pk": self.post.pk}))
         self.assertTemplateUsed(resp, "posts/delete.html")
 
     def test_post_delete_view_redirects(self):

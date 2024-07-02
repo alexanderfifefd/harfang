@@ -74,9 +74,7 @@ class ProfileEditViewTest(TestCase):
     def test_profile_edit_view_get(self):
         self.client.force_login(self.user)
         res = self.client.get(
-            reverse(
-                "users:profile_edit", kwargs={"username": self.user.username}
-            )
+            reverse("users:profile_edit", kwargs={"username": self.user.username})
         )
         self.assertEqual(res.status_code, 200)
         self.assertTemplateUsed(res, "base_form.html")
@@ -84,9 +82,7 @@ class ProfileEditViewTest(TestCase):
     def test_profile_edit_view_post(self):
         self.client.force_login(self.user)
         res = self.client.post(
-            reverse(
-                "users:profile_edit", kwargs={"username": self.user.username}
-            ),
+            reverse("users:profile_edit", kwargs={"username": self.user.username}),
             data={"bio": "test bio"},
         )
         self.assertEqual(res.status_code, 302)
@@ -98,9 +94,7 @@ class ProfileEditViewTest(TestCase):
     def test_profile_edit_view_post_invalid(self):
         self.client.force_login(self.user)
         res = self.client.post(
-            reverse(
-                "users:profile_edit", kwargs={"username": self.user.username}
-            ),
+            reverse("users:profile_edit", kwargs={"username": self.user.username}),
             data={"bio": "a" * (settings.BIO_MAX_LENGTH + 1)},
         )
         self.assertTemplateUsed(res, "base_form.html")

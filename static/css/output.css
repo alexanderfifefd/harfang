@@ -625,12 +625,12 @@ input[type="email"],
   background-color: rgb(248 250 252 / var(--tw-bg-opacity));
 }
 
-:is(.dark input[type="email"]),:is(.dark 
-  input[type="number"]),:is(.dark 
-  input[type="password"]),:is(.dark 
-  input[type="search"]),:is(.dark 
-  input[type="text"]),:is(.dark 
-  input[type="url"]),:is(.dark 
+:is(.dark input[type="email"]),:is(.dark
+  input[type="number"]),:is(.dark
+  input[type="password"]),:is(.dark
+  input[type="search"]),:is(.dark
+  input[type="text"]),:is(.dark
+  input[type="url"]),:is(.dark
   textarea) {
   --tw-bg-opacity: 1;
   background-color: rgb(235 219 178 / var(--tw-bg-opacity));
@@ -724,25 +724,25 @@ textarea {
   background-color: rgb(203 213 225 / var(--tw-bg-opacity));
 }
 
-:is(.dark [type="submit"]),:is(.dark 
-  [type="button"]),:is(.dark 
-  [type="reset"]),:is(.dark 
+:is(.dark [type="submit"]),:is(.dark
+  [type="button"]),:is(.dark
+  [type="reset"]),:is(.dark
   button) {
   --tw-bg-opacity: 1;
   background-color: rgb(80 73 69 / var(--tw-bg-opacity));
 }
 
-:is(.dark [type="submit"]:hover),:is(.dark 
-  [type="button"]:hover),:is(.dark 
-  [type="reset"]:hover),:is(.dark 
+:is(.dark [type="submit"]:hover),:is(.dark
+  [type="button"]:hover),:is(.dark
+  [type="reset"]:hover),:is(.dark
   button:hover) {
   --tw-bg-opacity: 1;
   background-color: rgb(80 73 69 / var(--tw-bg-opacity));
 }
 
-:is(.dark [type="submit"]:active),:is(.dark 
-  [type="button"]:active),:is(.dark 
-  [type="reset"]:active),:is(.dark 
+:is(.dark [type="submit"]:active),:is(.dark
+  [type="button"]:active),:is(.dark
+  [type="reset"]:active),:is(.dark
   button:active) {
   --tw-bg-opacity: 1;
   background-color: rgb(60 56 54 / var(--tw-bg-opacity));

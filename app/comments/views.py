@@ -101,9 +101,7 @@ def create_reply(request, parent_id):
             "comments/reply.html",
             {
                 "form": form,
-                "page_title": _("Reply to {username}").format(
-                    username=parent.user
-                ),
+                "page_title": _("Reply to {username}").format(username=parent.user),
                 "submit_text": _("Reply"),
                 "parent": parent,
             },
@@ -124,9 +122,7 @@ def detail(request, pk):
         {
             "comment": comment,
             "form": form,
-            "page_title": _("{username}'s comment").format(
-                username=comment.user
-            ),
+            "page_title": _("{username}'s comment").format(username=comment.user),
         },
     )
 

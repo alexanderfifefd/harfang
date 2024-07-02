@@ -20,12 +20,8 @@ class PostForm(AppModelForm):
             "title": _("Maximum {n} characters").format(
                 n=settings.POST_TITLE_MAX_LENGTH
             ),
-            "url": _("Maximum {n} characters").format(
-                n=settings.POST_URL_MAX_LENGTH
-            ),
-            "body": _("Maximum {n} characters").format(
-                n=settings.POST_BODY_MAX_LENGTH
-            ),
+            "url": _("Maximum {n} characters").format(n=settings.POST_URL_MAX_LENGTH),
+            "body": _("Maximum {n} characters").format(n=settings.POST_BODY_MAX_LENGTH),
         }
         widgets = {
             "image_url": forms.HiddenInput(),

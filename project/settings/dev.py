@@ -28,8 +28,7 @@ if DEBUG:
         else:
             INSTALLED_APPS.extend(["debug_toolbar"])
             MIDDLEWARE.insert(
-                MIDDLEWARE.index("django.middleware.common.CommonMiddleware")
-                + 1,
+                MIDDLEWARE.index("django.middleware.common.CommonMiddleware") + 1,
                 "debug_toolbar.middleware.DebugToolbarMiddleware",
             )
             INTERNAL_IPS = ["127.0.0.1"]

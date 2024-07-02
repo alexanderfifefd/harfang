@@ -7,25 +7,33 @@ from django.db import migrations, models
 class Migration(migrations.Migration):
 
     dependencies = [
-        ('posts', '0002_rename_html_post_body_html'),
+        ("posts", "0002_rename_html_post_body_html"),
         migrations.swappable_dependency(settings.AUTH_USER_MODEL),
     ]
 
     operations = [
         migrations.AlterModelOptions(
-            name='post',
-            options={'get_latest_by': 'submit_date', 'verbose_name': 'post', 'verbose_name_plural': 'posts'},
+            name="post",
+            options={
+                "get_latest_by": "submit_date",
+                "verbose_name": "post",
+                "verbose_name_plural": "posts",
+            },
         ),
         migrations.AlterUniqueTogether(
-            name='postvote',
+            name="postvote",
             unique_together=set(),
         ),
         migrations.AddIndex(
-            model_name='post',
-            index=models.Index(fields=['submit_date', 'points'], name='posts_post_submit__9af9d3_idx'),
+            model_name="post",
+            index=models.Index(
+                fields=["submit_date", "points"], name="posts_post_submit__9af9d3_idx"
+            ),
         ),
         migrations.AddConstraint(
-            model_name='postvote',
-            constraint=models.UniqueConstraint(fields=('user', 'post'), name='unique_vote'),
+            model_name="postvote",
+            constraint=models.UniqueConstraint(
+                fields=("user", "post"), name="unique_vote"
+            ),
         ),
     ]

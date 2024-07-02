@@ -43,9 +43,7 @@ class Command(BaseCommand):
             users.append(UserFactory(username=f"user{i}"))
 
         # create superuser
-        users.append(
-            UserFactory(is_superuser=True, is_staff=True, username="admin")
-        )
+        users.append(UserFactory(is_superuser=True, is_staff=True, username="admin"))
 
         posts = []
         for _ in range(NUM_POSTS):

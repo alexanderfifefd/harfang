@@ -27,7 +27,7 @@
     def toggleView()
         if #preview-chk matches <:checked/>
             set hiddenEl to 'md'
-        else 
+        else
             set hiddenEl to 'preview'
         end
         take .hidden from <#editor>div/> for #{hiddenEl}

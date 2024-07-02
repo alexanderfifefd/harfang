@@ -26,7 +26,5 @@ class ProfileForm(AppModelForm):
             "bio": forms.Textarea(attrs={"rows": 5}),
         }
         help_texts = {
-            "bio": _("Maximum {n} characters").format(
-                n=settings.BIO_MAX_LENGTH
-            ),
+            "bio": _("Maximum {n} characters").format(n=settings.BIO_MAX_LENGTH),
         }

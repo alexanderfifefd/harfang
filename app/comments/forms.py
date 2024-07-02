@@ -61,9 +61,7 @@ class CommentForm(AppModelForm):
         if getattr(settings, "COMMENTS_BLOCK_PROFANITIES", True) and getattr(
             settings, "PROFANITIES_LIST", False
         ):
-            bad_words = [
-                w for w in settings.PROFANITIES_LIST if w in body.lower()
-            ]
+            bad_words = [w for w in settings.PROFANITIES_LIST if w in body.lower()]
             if bad_words:
                 raise forms.ValidationError(
                     ngettext(
@@ -72,10 +70,7 @@ class CommentForm(AppModelForm):
                         len(bad_words),
                     )
                     % get_text_list(
-                        [
-                            f"\"{i[0]}{'*' * (len(i) - 2)}{i[-1]}\""
-                            for i in bad_words
-                        ],
+                        [f"\"{i[0]}{'*' * (len(i) - 2)}{i[-1]}\"" for i in bad_words],
                         gettext("and"),
                     )
                 )

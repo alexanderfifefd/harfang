@@ -42,9 +42,7 @@ def scrape_metadata(url):
 
     base_url = get_base_url(r.text, r.url)
 
-    d = extruct.extract(
-        r.text, base_url=base_url, syntaxes=SYTAXES, uniform=True
-    )
+    d = extruct.extract(r.text, base_url=base_url, syntaxes=SYTAXES, uniform=True)
     data = get_data(d)
     if data is not None:
         data["url"] = base_url
