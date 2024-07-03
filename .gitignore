@@ -13,3 +13,5 @@ devenv.local.nix
 #.pre-commit-config.yaml
 
 profanities.txt
+
+node_modules
