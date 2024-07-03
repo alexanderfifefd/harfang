@@ -1,3 +1,4 @@
+{% load compress %}
 {% load static %}
 <!DOCTYPE html>
 <html lang="en" class="font-sans">
@@ -28,7 +29,9 @@
               sizes="16x16"
               href="{% static 'images/favicon-16x16.png' %}">
         <link rel="manifest" href="{% static 'manifest.json' %}">
-        <link rel="stylesheet" href="{% static 'css/output.css' %}">
+        {% compress css %}
+            <link rel="stylesheet" href="{% static 'css/output.css' %}">
+        {% endcompress %}
         {% if debug %}
             <script defer src="{% static 'js/htmx/htmx.js' %}"></script>
             <script defer src="{% static 'js/_hyperscript.js' %}"></script>
@@ -37,6 +40,7 @@
             <script defer src="{% static 'js/_hyperscript.min.js' %}"></script>
         {% endif %}
         <script defer src="{% static 'js/htmx/ext/preload.js' %}"></script>
+        <script src="https://cdn.jsdelivr.net/npm/flowbite@2.4.1/dist/flowbite.min.js"></script>
         <script>
             function updateTheme() {
                 if (localStorage.theme === 'dark' || (!('theme' in localStorage) && window.matchMedia('(prefers-color-scheme: dark)').matches)) {

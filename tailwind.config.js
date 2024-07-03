@@ -1,7 +1,7 @@
 /** @type {import('tailwindcss').Config} */
 module.exports = {
-  plugins: [require("@tailwindcss/forms"), require("@tailwindcss/typography")],
-  content: ["./**/templates/**/*.html"],
+  plugins: [require("@tailwindcss/forms"), require("@tailwindcss/typography"), require('flowbite/plugin')],
+  content: ["./**/templates/**/*.html", './node_modules/flowbite/**/*.js'],
   darkMode: "class",
   theme: {
     extend: {

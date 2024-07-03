@@ -29,6 +29,7 @@ INSTALLED_APPS = [
     "app.markdown",
     "app.metadata",
     "app.users",
+    "compressor",  # new
 ]
 
 MIDDLEWARE = [
@@ -149,3 +150,8 @@ MARKDOWN_EXTENSION_CONFIGS = {
         "pygments_style": "gruvbox-dark",
     },
 }
+
+# Compressor
+COMPRESS_ROOT = BASE_DIR / "static"
+COMPRESS_ENABLED = True
+STATICFILES_FINDERS = ("compressor.finders.CompressorFinder",)
