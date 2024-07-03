@@ -11,7 +11,7 @@
                 hx-select="#{{ item|element_id }}-upvote-btn"
                 hx-select-oob="#{{ item|element_id }}-upvote"
                 {% if not user.is_authenticated %}disabled{% endif %}>
-            <span class="w-3 h-3 bg-blue-600 rounded-full mr-2"></span>
+            <span class="w-3 h-3 bg-yellow-500 rounded-full mr-2"></span>
             {{ item.points }}
         </button>
     {% else %}
@@ -24,7 +24,7 @@
                 hx-select="#{{ item|element_id }}-upvote-btn"
                 hx-select-oob="#{{ item|element_id }}-upvote"
                 {% if not user.is_authenticated %}disabled{% endif %}>
-            <span class="w-3 h-3 bg-blue-200 rounded-full mr-2"></span>
+            <span class="w-3 h-3 bg-yellow-300 rounded-full mr-2"></span>
             {{ item.points }}
         </button>
     {% endif %}

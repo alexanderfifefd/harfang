@@ -7,6 +7,7 @@ urlpatterns = [
     path("", views.top, name="index"),
     path("top/<str:range>/", views.top, name="top"),
     path("latest/", views.latest, name="latest"),
+    path("interested/", views.interested, name="interested"),
     path("submit/", views.create, name="submit"),
     path("<int:pk>/", views.detail, name="detail"),
     path("<int:pk>/edit/", views.update, name="update"),

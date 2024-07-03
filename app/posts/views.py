@@ -52,6 +52,23 @@ def latest(request):
     )
 
 
+@login_required
+def interested(request):
+    user = request.user
+
+    # Get posts that the user is interested in
+    posts = Post.objects.filter(interests__user=user).order_by("-submit_date")
+
+    return TemplateResponse(
+        request,
+        "posts/feed.html",
+        {
+            "page_obj": get_page(request, posts),
+            "page_title": _("Interested Posts"),
+        },
+    )
+
+
 def detail(request, pk):
     post = get_object_or_404(Post, pk=pk)
 
