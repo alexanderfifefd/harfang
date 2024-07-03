@@ -1,0 +1,10 @@
+{% load app_extras %}
+{% partialdef form %}
+<div id="{{ item|element_id }}-btn-bar"
+     class="flex flex-row mt-4 space-x-2">
+    {% include "partials/interest.html#form" with item=post %}
+    {% include "partials/vote.html#form" with item=post %}
+    {% include "partials/disinterest.html#form" with item=post %}
+</div>
+{% endpartialdef %}
+{% partial form %}

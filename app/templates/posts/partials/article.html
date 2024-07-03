@@ -22,9 +22,12 @@
             {% comment_count post %}
         </p>
     </article>
+    {% include "partials/button_bar.html#form" with item=post %}
+    <!--
     <div id="buttons" class="flex flex-row mt-4 space-x-2">
         {% include "partials/interest.html#form" with item=post %}
         {% include "partials/vote.html#form" with item=post %}
         {% include "partials/disinterest.html#form" with item=post %}
     </div>
+    -->
 </div>

@@ -1,5 +1,6 @@
 from datetime import timedelta
 
+from django.db import transaction
 from django.conf import settings
 from django.core.exceptions import ValidationError
 from django.db import models
@@ -147,10 +148,21 @@ class PostInterest(models.Model):
         return f"{self.user} showed interest in {self.post}"
 
     def save(self, *args, **kwargs):
-        if self._state.adding:
-            self.post.increment_interest()
-            self.post.user.increment_interest()
-        super().save(*args, **kwargs)
+        with transaction.atomic():
+            try:
+                disinterest = PostDisinterest.objects.get(
+                    user=self.user, post=self.post
+                )
+                disinterest.delete()
+                self.post.decrement_disinterest()
+                self.post.user.decrement_disinterest()
+            except PostDisinterest.DoesNotExist:
+                pass
+
+            if self._state.adding:
+                self.post.increment_interest()
+                self.post.user.increment_interest()
+            super().save(*args, **kwargs)
 
     def delete(self, *args, **kwargs):
         self.post.decrement_interest()
@@ -174,10 +186,22 @@ class PostDisinterest(models.Model):
         return f"{self.user} showed disinterest in {self.post}"
 
     def save(self, *args, **kwargs):
-        if self._state.adding:
-            self.post.increment_disinterest()
-            self.post.user.increment_disinterest()
-        super().save(*args, **kwargs)
+        with transaction.atomic():
+            try:
+                print("Starting try")
+                interest = PostInterest.objects.get(user=self.user, post=self.post)
+                interest.delete()
+                self.post.decrement_interest()
+                self.post.user.decrement_interest()
+                print("Interest exists")
+            except PostInterest.DoesNotExist:
+                print("Interest does not exist")
+                pass
+
+            if self._state.adding:
+                self.post.increment_disinterest()
+                self.post.user.increment_disinterest()
+            super().save(*args, **kwargs)
 
     def delete(self, *args, **kwargs):
         self.post.decrement_disinterest()
