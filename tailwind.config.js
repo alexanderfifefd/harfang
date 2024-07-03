@@ -6,6 +6,11 @@ module.exports = {
   theme: {
     extend: {
       colors: {
+        customBlue: '#1E3A8A',
+        darkMode: {
+          customBlue: '#000000',
+        },
+
         gruv: {
           red: {
             50: "#fb4934",
@@ -75,11 +80,21 @@ module.exports = {
     },
     fontFamily: {
       sans: [
-        "sans-serif",
-        "Apple Color Emoji",
-        "Segoe UI Emoji",
-        "Segoe UI Symbol",
-        "Noto Color Emoji",
+        'Inter',
+        'ui-sans-serif',
+        'system-ui',
+        '-apple-system',
+        'system-ui',
+        'Segoe UI',
+        'Roboto',
+        'Helvetica Neue',
+        'Arial',
+        'Noto Sans',
+        'sans-serif',
+        'Apple Color Emoji',
+        'Segoe UI Emoji',
+        'Segoe UI Symbol',
+        'Noto Color Emoji'
       ],
       serif: [
         "serif",
