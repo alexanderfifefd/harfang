@@ -1,19 +1,31 @@
 {% load app_extras %}
 {% partialdef form %}
 <span>
-    <button id="{{ item|element_id }}-upvote-btn"
+    <button id="{{ item|element_id }}-interest-btn"
             class="p-2 m-0 w-8 bg-transparent shadow-none dark:bg-transparent hover:bg-transparent active:bg-transparent dark:active:bg-transparent dark:hover:bg-transparent"
-            aria-label="Upvote"
+            aria-label="Interest"
             type="button"
-            hx-post="{{ item.get_vote_url }}"
+            hx-post="{{ item.get_interest_url }}"
             hx-swap="outerHTML"
-            hx-select="#{{ item|element_id }}-upvote-btn"
-            hx-select-oob="#{{ item|element_id }}-points"
-            {% if notuser.is_authenticated %}disabled{% endif %}>
-        <svg class="{% if item|voted_on_by:user %} fill-blue-600 stroke-blue-600 dark:fill-blue-50 dark:stroke-blue-50 {% elif not user.is_authenticated %} fill-slate-300 stroke-slate-300 dark:fill-gruv-700 dark:stroke-gruv-700 {% else %} fill-slate-500 stroke-slate-500 dark:fill-gruv-500 dark:stroke-gruv-500 {% endif %}"
-             viewBox="0 0 38 34">
-            <rect x="4" y="4" width="30" height="26" stroke-linejoin="round" stroke-width="4" />
-        </svg>
+            hx-select="#{{ item|element_id }}-interest-btn"
+            hx-select-oob="#{{ item|element_id }}-interest"
+            {% if not user.is_authenticated %}disabled{% endif %}>
+        {% if item|interested_by:user %}
+            <svg class="fill-blue-600 stroke-blue-600 dark:fill-blue-50 dark:stroke-blue-50"
+                 viewBox="0 0 38 34">
+                <rect x="4" y="4" width="30" height="26" stroke-linejoin="round" stroke-width="4" />
+            </svg>
+        {% elif not user.is_authenticated %}
+            <svg class="fill-slate-300 stroke-slate-300 dark:fill-gruv-700 dark:stroke-gruv-700"
+                 viewBox="0 0 38 34">
+                <rect x="4" y="4" width="30" height="26" stroke-linejoin="round" stroke-width="4" />
+            </svg>
+        {% else %}
+            <svg class="fill-slate-500 stroke-slate-500 dark:fill-gruv-500 dark:stroke-gruv-500"
+                 viewBox="0 0 38 34">
+                <rect x="4" y="4" width="30" height="26" stroke-linejoin="round" stroke-width="4" />
+            </svg>
+        {% endif %}
     </button>
 </span>
 {% endpartialdef %}

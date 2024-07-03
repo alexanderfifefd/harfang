@@ -103,6 +103,9 @@ class Post(PointsMixin, models.Model):
     def get_vote_url(self):
         return reverse("posts:vote", args=[str(self.pk)])
 
+    def get_interest_url(self):
+        return reverse("posts:interest", args=[str(self.pk)])
+
 
 class PostVote(Vote):
     class Meta:
@@ -124,6 +127,31 @@ class PostVote(Vote):
     def delete(self, *args, **kwargs):
         self.post.decrement_points()
         self.post.user.decrement_points()
+        super().delete(*args, **kwargs)
+
+
+class PostInterest(models.Model):
+    user = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.CASCADE)
+    post = models.ForeignKey(Post, on_delete=models.CASCADE, related_name="interests")
+    submit_date = models.DateTimeField(default=timezone.now)
+
+    class Meta:
+        constraints = [
+            models.UniqueConstraint(fields=["user", "post"], name="unique_interest")
+        ]
+
+    def __str__(self):
+        return f"{self.user} showed interest in {self.post}"
+
+    def save(self, *args, **kwargs):
+        if self._state.adding:
+            self.post.increment_interest()
+            self.post.user.increment_interest()
+        super().save(*args, **kwargs)
+
+    def delete(self, *args, **kwargs):
+        self.post.decrement_interest()
+        self.post.user.decrement_interest()
         super().delete(*args, **kwargs)
 
 

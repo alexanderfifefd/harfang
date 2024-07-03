@@ -18,6 +18,11 @@ def voted_on_by(obj, user):
     return obj.votes.filter(user=user.id).exists()
 
 
+@register.filter(name="interested_by")
+def interested_by(obj, user):
+    return obj.interests.filter(user=user.id).exists()
+
+
 @register.simple_tag(takes_context=True)
 def hx_attrs(context):
     """Returns a string of 'hx-*' attributes from a context dict named 'hx_attrs'

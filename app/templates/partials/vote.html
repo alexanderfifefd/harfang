@@ -10,10 +10,22 @@
             hx-select="#{{ item|element_id }}-upvote-btn"
             hx-select-oob="#{{ item|element_id }}-points"
             {% if notuser.is_authenticated %}disabled{% endif %}>
-        <svg class="{% if item|voted_on_by:user %} fill-green-600 stroke-green-600 dark:fill-gruv-green-50 dark:stroke-gruv-green-50 {% elif not user.is_authenticated %} fill-slate-300 stroke-slate-300 dark:fill-gruv-700 dark:stroke-gruv-700 {% else %} fill-slate-500 stroke-slate-500 dark:fill-gruv-500 dark:stroke-gruv-500 {% endif %}"
-             viewBox="0 0 38 34">
-            <polygon stroke-linejoin="round" stroke-width="4" points="19,4 34,30 4,30" />
-        </svg>
+        {% if item|voted_on_by:user %}
+            <svg class="fill-green-600 stroke-green-600 dark:fill-gruv-green-50 dark:stroke-gruv-green-50"
+                 viewBox="0 0 38 34">
+                <polygon stroke-linejoin="round" stroke-width="4" points="19,4 34,30 4,30" />
+            </svg>
+        {% elif not user.is_authenticated %}
+            <svg class="fill-slate-300 stroke-slate-300 dark:fill-gruv-700 dark:stroke-gruv-700"
+                 viewBox="0 0 38 34">
+                <polygon stroke-linejoin="round" stroke-width="4" points="19,4 34,30 4,30" />
+            </svg>
+        {% else %}
+            <svg class="fill-slate-500 stroke-slate-500 dark:fill-gruv-500 dark:stroke-gruv-500"
+                 viewBox="0 0 38 34">
+                <polygon stroke-linejoin="round" stroke-width="4" points="19,4 34,30 4,30" />
+            </svg>
+        {% endif %}
     </button>
 </span>
 {% endpartialdef %}

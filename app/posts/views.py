@@ -12,7 +12,7 @@ from app.comments.forms import CommentForm
 from app.utils import get_page
 
 from .forms import PostForm
-from .models import Post, PostVote
+from .models import Post, PostVote, PostInterest
 
 
 def top(request, range="day"):
@@ -164,4 +164,30 @@ def vote(request, pk):
 
     return TemplateResponse(
         request, "partials/vote.html", {"item": post}, status=status
+    )
+
+
+@login_required
+@require_POST
+def interest(request, pk):
+    post = get_object_or_404(Post, pk=pk)
+    status = 200
+    try:
+        # delete interest if already interested
+        interest = post.interests.get(user=request.user)
+        interest.delete()
+    except PostInterest.DoesNotExist:
+        # create interest if not
+        try:
+            PostInterest(
+                user=request.user, post=post, submit_date=timezone.now()
+            ).save()
+            status = 201
+        except ValidationError as e:
+            return HttpResponseForbidden(e)
+
+    post.refresh_from_db()
+
+    return TemplateResponse(
+        request, "partials/interest.html", {"item": post}, status=status
     )
