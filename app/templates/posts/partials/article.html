@@ -1,6 +1,15 @@
 {% load app_extras comments_extras %}
 <div id="{{ post|element_id }}"
      class="dark:bg-gruv-layer1 flex flex-col my-4 card shadow-md rounded-lg overflow-hidden p-4">
+    <!-- Top Level: Author, Tags, etc. -->
+    <div class="flex justify-between items-center mb-2">
+        <div class="flex items-center">
+            <!-- Author and other top-level information -->
+            {% include "partials/profile_button.html" with user=post.user %}
+            <span class="text-sm text-gray-500 ml-2">Tags: {{ post.tags.all|join:", " }}</span>
+        </div>
+    </div>
+    <!-- Middle Level: Content, Title, Description, etc. -->
     <article>
         <header>
             <a href="{% url 'posts:detail' post.id %}"
@@ -23,7 +32,8 @@
             {% comment_count post %}
         </p>
     </article>
-    <div id="buttons" class="flex flex-row mt-4 space-x-2">
+    <!-- Bottom Level: Engagement Numbers -->
+    <div id="buttons" class="flex justify-end flex-row mt-4 space-x-2">
         {% include "partials/interest.html#form" with item=post %}
         {% include "partials/vote.html#form" with item=post %}
         {% include "partials/disinterest.html#form" with item=post %}

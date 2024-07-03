@@ -1,0 +1,13 @@
+{% load app_extras %}
+{% partialdef form %}
+<button id="author-btn"
+        class="flex px-2 py-1 items-center dark:text-gruv-fg dark:bg-gruv-layer2 rounded-lg shadow-md hover:bg-gray-100 focus:outline-none"
+        type="button">
+    {% if request.user == user %}
+        <span class="rounded-full text-orange-500 dark:text-gruv-orange-50">{{ user }}</span>
+    {% else %}
+        <span class="rounded-full">{{ user }}</span>
+    {% endif %}
+</button>
+{% endpartialdef %}
+{% partial form %}
