@@ -73,13 +73,10 @@ module.exports = {
             layer2: "#E0E0E0",
             layer3: "#C0C0C0",
           },
-          dark: {
-            layer1: "#2A2A2A",
-            layer2: "#404040",
-            layer3: "#505050"
-          },
 
-
+          layer1: "#2A2A2A",
+          layer2: "#404040",
+          layer3: "#505050",
           fg: "#ebdbb2",
           card: "#3c3836"
         },
