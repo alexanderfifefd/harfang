@@ -3429,6 +3429,10 @@ hr:is(.dark *) {
   --tw-ring-color: rgb(229 231 235 / var(--tw-ring-opacity));
 }
 
+.disabled\:opacity-50:disabled {
+  opacity: 0.5;
+}
+
 .dark\:divide-gray-600:is(.dark *) > :not([hidden]) ~ :not([hidden]) {
   --tw-divide-opacity: 1;
   border-color: rgb(75 85 99 / var(--tw-divide-opacity));
@@ -3456,6 +3460,26 @@ hr:is(.dark *) {
 
 .dark\:border-transparent:is(.dark *) {
   border-color: transparent;
+}
+
+.dark\:border-gruv-fg:is(.dark *) {
+  --tw-border-opacity: 1;
+  border-color: rgb(235 219 178 / var(--tw-border-opacity));
+}
+
+.dark\:border-gruv-layer1:is(.dark *) {
+  --tw-border-opacity: 1;
+  border-color: rgb(42 42 42 / var(--tw-border-opacity));
+}
+
+.dark\:border-gruv-layer2:is(.dark *) {
+  --tw-border-opacity: 1;
+  border-color: rgb(64 64 64 / var(--tw-border-opacity));
+}
+
+.dark\:border-gruv-bg:is(.dark *) {
+  --tw-border-opacity: 1;
+  border-color: rgb(32 32 32 / var(--tw-border-opacity));
 }
 
 .dark\:bg-blue-600:is(.dark *) {
@@ -3518,6 +3542,16 @@ hr:is(.dark *) {
 
 .dark\:bg-transparent:is(.dark *) {
   background-color: transparent;
+}
+
+.dark\:bg-gruv-layer1:is(.dark *) {
+  --tw-bg-opacity: 1;
+  background-color: rgb(42 42 42 / var(--tw-bg-opacity));
+}
+
+.dark\:bg-gruv-fg:is(.dark *) {
+  --tw-bg-opacity: 1;
+  background-color: rgb(235 219 178 / var(--tw-bg-opacity));
 }
 
 .dark\:\!text-gruv-orange-50:is(.dark *) {

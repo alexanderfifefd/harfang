@@ -3,7 +3,7 @@
 <span>
     {% if item|voted_on_by:user %}
         <button id="{{ item|element_id }}-upvote-btn"
-                class="flex items-center px-4 py-2 dark:text-gruv-fg dark:bg-gruv-layer3 rounded-lg shadow-md hover:bg-gruv-layer3 focus:outline-none"
+                class="flex items-center px-4 py-2 dark:text-gruv-fg dark:bg-gruv-layer2 rounded-lg shadow-md hover:bg-gray-100 focus:outline-none"
                 aria-label="Upvote"
                 type="button"
                 hx-post="{{ item.get_vote_url }}"
@@ -16,7 +16,7 @@
         </button>
     {% else %}
         <button id="{{ item|element_id }}-upvote-btn"
-                class="flex items-center px-4 py-2 dark:text-gruv-fg dark:bg-gruv-layer2 rounded-lg shadow-md hover:bg-gray-300 focus:outline-none"
+                class="flex items-center px-4 py-2 dark:text-gruv-fg dark:bg-gruv-bg rounded-lg shadow-md hover:bg-gray-300 focus:outline-none"
                 aria-label="Upvote"
                 type="button"
                 hx-post="{{ item.get_vote_url }}"
