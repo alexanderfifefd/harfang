@@ -1,16 +1,23 @@
 /** @type {import('tailwindcss').Config} */
 module.exports = {
   plugins: [require("@tailwindcss/forms"), require("@tailwindcss/typography"), require('flowbite/plugin')],
-  content: ["./**/templates/**/*.html", './node_modules/flowbite/**/*.js'],
+  content: ["./**/templates/**/*.html", './node_modules/flowbite/**/*.js', 'static/css/styles.css'],
   darkMode: "class",
   theme: {
     extend: {
       colors: {
-        customBlue: '#1E3A8A',
-        darkMode: {
-          customBlue: '#000000',
+        interest: {
+          weak: "#5677CB",
+          strong: "#2E68FE"
         },
-
+        quality: {
+          weak: "#CBA658",
+          strong: "#FFAD00"
+        },
+        disinterest: {
+          weak: "#CB726D",
+          strong: "#FE5F57"
+        },
         gruv: {
           red: {
             50: "#fb4934",
@@ -60,8 +67,21 @@ module.exports = {
           900: "#282828",
           950: "#1d2021",
 
-          bg: "#282828",
+          bg: "#202020",
+          light: {
+            layer1: "#FAFAFA",
+            layer2: "#E0E0E0",
+            layer3: "#C0C0C0",
+          },
+          dark: {
+            layer1: "#2A2A2A",
+            layer2: "#404040",
+            layer3: "#505050"
+          },
+
+
           fg: "#ebdbb2",
+          card: "#3c3836"
         },
       },
       typography: (theme) => ({

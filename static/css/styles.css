@@ -1,0 +1,34 @@
+/* styles.css */
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* Light mode custom classes */
+.custom-bg-layer1 {
+    @apply bg-light-layer1;
+}
+
+.custom-bg-layer2 {
+    @apply bg-light-layer2;
+}
+
+.custom-bg-layer3 {
+    @apply bg-light-layer3;
+}
+
+/* Dark mode custom classes */
+.dark .custom-bg-layer1 {
+    @apply bg-dark-layer1;
+}
+
+.dark .custom-bg-layer2 {
+    @apply bg-dark-layer2;
+}
+
+.dark .custom-bg-layer3 {
+    @apply bg-dark-layer3;
+}

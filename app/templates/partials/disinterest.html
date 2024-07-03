@@ -3,7 +3,7 @@
 <span>
     {% if item|disinterested_by:user %}
         <button id="{{ item|element_id }}-disinterest-btn"
-                class="flex items-center px-4 py-2 bg-gray-200 text-gray-700 rounded-lg shadow-md hover:bg-gray-100 focus:outline-none"
+                class="flex items-center px-4 py-2 dark:text-gruv-fg dark:bg-gruv-layer3 rounded-lg shadow-md hover:bg-gray-100 focus:outline-none"
                 aria-label="Disinterest"
                 type="button"
                 hx-post="{{ item.get_disinterest_url }}"
@@ -16,7 +16,7 @@
         </button>
     {% else %}
         <button id="{{ item|element_id }}-disinterest-btn"
-                class="flex items-center px-4 py-2 bg-gray-50 text-gray-600 rounded-lg shadow-md hover:bg-gray-300 focus:outline-none"
+                class="flex items-center px-4 py-2 dark:text-gruv-fg dark:bg-gruv-layer2 rounded-lg shadow-md hover:bg-gray-300 focus:outline-none"
                 aria-label="Disinterest"
                 type="button"
                 hx-post="{{ item.get_disinterest_url }}"
