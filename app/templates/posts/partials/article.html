@@ -1,9 +1,5 @@
 {% load app_extras comments_extras %}
-<div id="{{ post|element_id }}" class="flex my-4">
-    <div id="buttons" class="flex flex-col">
-        {% include "partials/vote.html#form" with item=post %}
-        {% include "partials/interest.html#form" with item=post %}
-    </div>
+<div id="{{ post|element_id }}" class="flex flex-col my-4">
     <article>
         <header>
             <a href="{% url 'posts:detail' post.id %}"
@@ -11,10 +7,12 @@
                class="no-anchor">{{ post.title }}</a>
         </header>
         <p class="text-sm muted">
+            <!--{% include "partials/profile_link.html" with user=post.user %}
             {% points_count post %}
             •
-            {% include "partials/profile_link.html" with user=post.user %}
+
             •
+            -->
             <span class="whitespace-nowrap">
                 {% blocktranslate trimmed with age=post.submit_date|timesince %}
                     {{ age }} ago
@@ -24,4 +22,8 @@
             {% comment_count post %}
         </p>
     </article>
+    <div id="buttons" class="flex flex-row mt-4 space-x-2">
+        {% include "partials/vote.html#form" with item=post %}
+        {% include "partials/interest.html#form" with item=post %}
+    </div>
 </div>

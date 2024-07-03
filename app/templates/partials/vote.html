@@ -1,33 +1,33 @@
 {% load app_extras %}
 {% partialdef form %}
 <span>
-    <button id="{{ item|element_id }}-upvote-btn"
-            class="p-2 m-0 w-8 bg-transparent shadow-none dark:bg-transparent hover:bg-transparent active:bg-transparent dark:active:bg-transparent dark:hover:bg-transparent"
-            aria-label="Upvote"
-            type="button"
-            hx-post="{{ item.get_vote_url }}"
-            hx-swap="outerHTML"
-            hx-select="#{{ item|element_id }}-upvote-btn"
-            hx-select-oob="#{{ item|element_id }}-points"
-            {% if notuser.is_authenticated %}disabled{% endif %}>
-        {% if item|voted_on_by:user %}
-            <svg class="fill-green-600 stroke-green-600 dark:fill-gruv-green-50 dark:stroke-gruv-green-50"
-                 viewBox="0 0 38 34">
-                <polygon stroke-linejoin="round" stroke-width="4" points="19,4 34,30 4,30" />
-            </svg>
-        {% elif not user.is_authenticated %}
-            <svg class="fill-slate-300 stroke-slate-300 dark:fill-gruv-700 dark:stroke-gruv-700"
-                 viewBox="0 0 38 34">
-                <polygon stroke-linejoin="round" stroke-width="4" points="19,4 34,30 4,30" />
-            </svg>
-        {% else %}
-            <svg class="fill-slate-500 stroke-slate-500 dark:fill-gruv-500 dark:stroke-gruv-500"
-                 viewBox="0 0 38 34">
-                <polygon stroke-linejoin="round" stroke-width="4" points="19,4 34,30 4,30" />
-            </svg>
-        {% endif %}
-    </button>
+    {% if item|voted_on_by:user %}
+        <button id="{{ item|element_id }}-upvote-btn"
+                class="flex items-center px-4 py-2 bg-gray-200 text-gray-700 rounded-lg shadow-md hover:bg-gray-100 focus:outline-none"
+                aria-label="Upvote"
+                type="button"
+                hx-post="{{ item.get_vote_url }}"
+                hx-swap="outerHTML"
+                hx-select="#{{ item|element_id }}-upvote-btn"
+                hx-select-oob="#{{ item|element_id }}-upvote"
+                {% if not user.is_authenticated %}disabled{% endif %}>
+            <span class="w-3 h-3 bg-blue-600 rounded-full mr-2"></span>
+            {{ item.points }}
+        </button>
+    {% else %}
+        <button id="{{ item|element_id }}-upvote-btn"
+                class="flex items-center px-4 py-2 bg-gray-50 text-gray-600 rounded-lg shadow-md hover:bg-gray-300 focus:outline-none"
+                aria-label="Upvote"
+                type="button"
+                hx-post="{{ item.get_vote_url }}"
+                hx-swap="outerHTML"
+                hx-select="#{{ item|element_id }}-upvote-btn"
+                hx-select-oob="#{{ item|element_id }}-upvote"
+                {% if not user.is_authenticated %}disabled{% endif %}>
+            <span class="w-3 h-3 bg-blue-200 rounded-full mr-2"></span>
+            {{ item.points }}
+        </button>
+    {% endif %}
 </span>
 {% endpartialdef %}
 {% partial form %}
-{% points_count item %}

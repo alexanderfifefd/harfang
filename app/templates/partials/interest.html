@@ -1,37 +1,33 @@
 {% load app_extras %}
 {% partialdef form %}
 <span>
-    <button id="{{ item|element_id }}-interest-btn"
-            class="p-2 m-0 w-8 bg-transparent shadow-none dark:bg-transparent hover:bg-transparent active:bg-transparent dark:active:bg-transparent dark:hover:bg-transparent"
-            aria-label="Interest"
-            type="button"
-            hx-post="{{ item.get_interest_url }}"
-            hx-swap="outerHTML"
-            hx-select="#{{ item|element_id }}-interest-btn"
-            hx-select-oob="#{{ item|element_id }}-interest"
-            {% if not user.is_authenticated %}disabled{% endif %}>
-        {% if item|interested_by:user %}
-            <svg class="fill-blue-600 stroke-blue-600 dark:fill-blue-50 dark:stroke-blue-50"
-                 viewBox="0 0 38 34">
-                <rect x="4" y="4" width="30" height="26" stroke-linejoin="round" stroke-width="4" />
-            </svg>
-        {% elif not user.is_authenticated %}
-            <svg class="fill-slate-300 stroke-slate-300 dark:fill-gruv-700 dark:stroke-gruv-700"
-                 viewBox="0 0 38 34">
-                <rect x="4" y="4" width="30" height="26" stroke-linejoin="round" stroke-width="4" />
-            </svg>
-        {% else %}
-            <svg class="fill-slate-500 stroke-slate-500 dark:fill-gruv-500 dark:stroke-gruv-500"
-                 viewBox="0 0 38 34">
-                <rect x="4" y="4" width="30" height="26" stroke-linejoin="round" stroke-width="4" />
-            </svg>
-        {% endif %}
-    </button>
-    <div class="inline-flex">
-        <button class="bg-red-300 hover:bg-gray-400 text-gray-800 font-bold py-2 px-4 rounded-l">5</button>
-        <button class="bg-blue-300 hover:bg-gray-400 text-gray-800 font-bold py-2 px-4 rounded-r">4</button>
-    </div>
+    {% if item|interested_by:user %}
+        <button id="{{ item|element_id }}-interest-btn"
+                class="flex items-center px-4 py-2 bg-gray-200 text-gray-700 rounded-lg shadow-md hover:bg-gray-100 focus:outline-none"
+                aria-label="Interest"
+                type="button"
+                hx-post="{{ item.get_interest_url }}"
+                hx-swap="outerHTML"
+                hx-select="#{{ item|element_id }}-interest-btn"
+                hx-select-oob="#{{ item|element_id }}-interest"
+                {% if not user.is_authenticated %}disabled{% endif %}>
+            <span class="w-3 h-3 bg-yellow-500 rounded-full mr-2"></span>
+            {{ item.interest }}
+        </button>
+    {% else %}
+        <button id="{{ item|element_id }}-interest-btn"
+                class="flex items-center px-4 py-2 bg-gray-50 text-gray-600 rounded-lg shadow-md hover:bg-gray-300 focus:outline-none"
+                aria-label="Interest"
+                type="button"
+                hx-post="{{ item.get_interest_url }}"
+                hx-swap="outerHTML"
+                hx-select="#{{ item|element_id }}-interest-btn"
+                hx-select-oob="#{{ item|element_id }}-interest"
+                {% if not user.is_authenticated %}disabled{% endif %}>
+            <span class="w-3 h-3 bg-yellow-300 rounded-full mr-2"></span>
+            {{ item.interest }}
+        </button>
+    {% endif %}
 </span>
 {% endpartialdef %}
 {% partial form %}
-{% points_count item %}
