@@ -5,7 +5,7 @@
     {% if page_obj.paginator.count == 0 %}
         <p>{% translate "No posts available." %}</p>
     {% else %}
-        <div id="feed" class="flex flex-col justify-left items-left items-start">
+        <div id="feed" class="mx-auto">
             <div class="feed-box">
                 {% block feed %}
                 {% endblock feed %}

@@ -1,6 +1,7 @@
 {% load app_extras comments_extras %}
-<div id="{{ post|element_id }}" class="flex flex-col my-4">
-    <article>
+<div id="{{ post|element_id }}"
+     class="flex flex-col my-4 card bg-white shadow-md rounded-lg overflow-hidden p-4">
+    <article class=>
         <header>
             <a href="{% url 'posts:detail' post.id %}"
                preload="mouseover"
@@ -28,3 +29,8 @@
         {% include "partials/disinterest.html#form" with item=post %}
     </div>
 </div>
+<!--
+div id="{{ post|element_id }}"
+     class="flex flex-col my-4 card bg-white shadow-md rounded-lg overflow-hidden p-4">
+    <article max-w-full sm:max-w-md md:max-w-lg lg:max-w-xl xl:max-w-2xl>
+    -->

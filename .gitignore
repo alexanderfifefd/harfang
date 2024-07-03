@@ -15,3 +15,5 @@ devenv.local.nix
 profanities.txt
 
 node_modules
+
+static/CACHE
