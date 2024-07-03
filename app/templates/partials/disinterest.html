@@ -1,0 +1,33 @@
+{% load app_extras %}
+{% partialdef form %}
+<span>
+    {% if item|disinterested_by:user %}
+        <button id="{{ item|element_id }}-disinterest-btn"
+                class="flex items-center px-4 py-2 bg-gray-200 text-gray-700 rounded-lg shadow-md hover:bg-gray-100 focus:outline-none"
+                aria-label="Disinterest"
+                type="button"
+                hx-post="{{ item.get_disinterest_url }}"
+                hx-swap="outerHTML"
+                hx-select="#{{ item|element_id }}-disinterest-btn"
+                hx-select-oob="#{{ item|element_id }}-disinterest"
+                {% if not user.is_authenticated %}disabled{% endif %}>
+            <span class="w-3 h-3 bg-red-600 rounded-full mr-2"></span>
+            {{ item.disinterest }}
+        </button>
+    {% else %}
+        <button id="{{ item|element_id }}-disinterest-btn"
+                class="flex items-center px-4 py-2 bg-gray-50 text-gray-600 rounded-lg shadow-md hover:bg-gray-300 focus:outline-none"
+                aria-label="Disinterest"
+                type="button"
+                hx-post="{{ item.get_disinterest_url }}"
+                hx-swap="outerHTML"
+                hx-select="#{{ item|element_id }}-disinterest-btn"
+                hx-select-oob="#{{ item|element_id }}-disinterest"
+                {% if not user.is_authenticated %}disabled{% endif %}>
+            <span class="w-3 h-3 bg-red-200 rounded-full mr-2"></span>
+            {{ item.disinterest }}
+        </button>
+    {% endif %}
+</span>
+{% endpartialdef %}
+{% partial form %}

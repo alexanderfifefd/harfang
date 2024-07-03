@@ -23,6 +23,11 @@ def interested_by(obj, user):
     return obj.interests.filter(user=user.id).exists()
 
 
+@register.filter(name="disinterested_by")
+def disinterested_by(obj, user):
+    return obj.disinterests.filter(user=user.id).exists()
+
+
 @register.simple_tag(takes_context=True)
 def hx_attrs(context):
     """Returns a string of 'hx-*' attributes from a context dict named 'hx_attrs'
