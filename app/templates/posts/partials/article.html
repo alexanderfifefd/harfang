@@ -80,7 +80,19 @@
         </p>
     </article>
     <!-- Bottom Level: Engagement Numbers -->
-    {% include "partials/button_bar.html#form" with item=post %}
+    <ul class="flex text-sm font-medium rounded-l dark:text-gray-400 rtl:divide-x-reverse">
+        <li class="flex-1 text-left">
+            <div class="flex p-0 m-0 w-full">{{ post.submit_date }}</div>
+        </li>
+        <li class="flex-shrink-0">
+            <div class="flex p-0 m-0">{% include "partials/button_bar.html#form" with item=post %}</div>
+        </li>
+        <li class="flex-1 text-right">
+            <div class="flex p-0 m-0 w-full justify-end space-x-0">
+                {% include "partials/button_bar.html#form" with item=post %}
+            </div>
+        </li>
+    </ul>
 </div>
 <!--
 div id="{{ post|element_id }}"
