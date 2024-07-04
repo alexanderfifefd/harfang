@@ -91,6 +91,18 @@ def detail(request, pk):
     )
 
 
+def detail_content(request, pk):
+    post = get_object_or_404(Post, pk=pk)
+
+    return TemplateResponse(
+        request,
+        "posts/partials/detail_content.html",
+        {
+            "post": post,
+        },
+    )
+
+
 @login_required
 def create(request):
     if request.method == "POST":

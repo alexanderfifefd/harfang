@@ -1,4 +1,4 @@
-{% load app_extras comments_extras static %}
+{% load app_extras comments_extras %}
 <div id="{{ post|element_id }}"
      class="flex flex-col my-2 card shadow-md rounded-l overflow-hidden p-4">
     <!-- Top Level: Author, Tags, etc. -->
@@ -55,6 +55,9 @@
                preload="mouseover"
                class="no-anchor">{{ post.title }}</a>
         </header>
+        <p>
+            <a href="{{ post.url }}" target="_blank">{{ post.url }}</a>
+        </p>
         <p class="text-sm muted">
             <!--{% include "partials/profile_link.html" with user=post.user %}
             {% points_count post %}
@@ -71,7 +74,8 @@
             {% comment_count post %}
         </p>
     </article>
-    <!-- Bottom Level: Engagement Numbers -->
+    <div id="detail-preview{{ post.id }}"></div>
+    <!-- Bottom Level: Preview. Engagement.  -->
     <ul class="flex text-sm font-medium rounded-l dark:text-gray-400 rtl:divide-x-reverse">
         <li class="flex-1 text-left">
             <div class="flex p-0 m-0 w-full">{{ post.submit_date }}</div>
@@ -79,6 +83,9 @@
         <li class="flex-shrink-0">
             <div class="flex p-0 m-0">
                 <button type="button"
+                        hx-get="{% url 'posts:detail_content' post.id %}"
+                        hx-swap="innerHTML"
+                        hx-target="#detail-preview{{ post.id }}"
                         class="inline-flex items-center px-4 py-2 text-sm font-medium text-gray-900 bg-white border border-gray-200 rounded-l hover:bg-gray-100 hover:text-blue-700 focus:z-10 focus:ring-2 focus:ring-blue-700 focus:text-blue-700 dark:bg-gray-800 dark:border-gray-700 dark:text-white dark:hover:text-white dark:hover:bg-gray-700 dark:focus:ring-blue-500 dark:focus:text-white">
                     +
                 </button>
@@ -90,6 +97,7 @@
             </div>
         </li>
     </ul>
+    <!-- New div where the article content will be inserted -->
 </div>
 <!--
 div id="{{ post|element_id }}"
