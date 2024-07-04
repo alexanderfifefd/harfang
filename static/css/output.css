@@ -3619,6 +3619,11 @@ hr:is(.dark *) {
   background-color: transparent;
 }
 
+.dark\:bg-gray-500:is(.dark *) {
+  --tw-bg-opacity: 1;
+  background-color: rgb(107 114 128 / var(--tw-bg-opacity));
+}
+
 .dark\:\!text-gruv-orange-50:is(.dark *) {
   --tw-text-opacity: 1 !important;
   color: rgb(254 128 25 / var(--tw-text-opacity)) !important;
