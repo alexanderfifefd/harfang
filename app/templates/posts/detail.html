@@ -2,7 +2,6 @@
 {% block header %}
     {{ block.super }}
     <p>
-        {% include "partials/vote.html" with item=post %}
         •
         {% blocktranslate trimmed with age=post.submit_date|timesince %}
             Posted {{ age }} ago
@@ -34,6 +33,7 @@
         {% endif %}
         <div class="mb-8 max-w-prose sm:mx-auto sm:mb-14 dark:prose-invert">{{ post.body_html|safe }}</div>
     </article>
+    {% include "partials/button_bar.html#form" with item=post %}
 {% endblock content %}
 {% block discussion %}
     {% if form %}

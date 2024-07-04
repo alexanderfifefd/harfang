@@ -1,12 +1,18 @@
 {% load app_extras comments_extras %}
 <div id="{{ post|element_id }}"
-     class="dark:bg-gruv-layer1 flex flex-col my-4 card shadow-md rounded-lg overflow-hidden p-4">
+     class="dark:bg-gruv-layer1 flex flex-col my-2 card shadow-md rounded-lg overflow-hidden p-4">
     <!-- Top Level: Author, Tags, etc. -->
-    <div class="flex justify-between items-center mb-2">
-        <div class="flex items-center">
+    <div class="flex justify-between items-center mb-2 ">
+        <div class="flex items-center space-x-2">
             <!-- Author and other top-level information -->
             {% include "partials/profile_button.html" with user=post.user %}
-            <span class="text-sm text-gray-500 ml-2">Tags: {{ post.tags.all|join:", " }}</span>
+            {% include "partials/profile_button.html" with user=post.user %}
+        </div>
+        <div class="flex items-center space-x-2">
+            <!-- Author and other top-level information -->
+            {% include "partials/profile_button.html" with user=post.user %}
+            {% include "partials/profile_button.html" with user=post.user %}
+            {% include "partials/profile_button.html" with user=post.user %}
         </div>
     </div>
     <!-- Middle Level: Content, Title, Description, etc. -->
@@ -33,11 +39,7 @@
         </p>
     </article>
     <!-- Bottom Level: Engagement Numbers -->
-    <div id="buttons" class="flex justify-end flex-row mt-4 space-x-2">
-        {% include "partials/interest.html#form" with item=post %}
-        {% include "partials/vote.html#form" with item=post %}
-        {% include "partials/disinterest.html#form" with item=post %}
-    </div>
+    {% include "partials/button_bar.html#form" with item=post %}
 </div>
 <!--
 div id="{{ post|element_id }}"
