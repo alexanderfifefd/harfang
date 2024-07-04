@@ -6,10 +6,8 @@
         <p>{% translate "No posts available." %}</p>
     {% else %}
         <div id="feed" class="mx-auto">
-            <div class="feed-box">
-                {% block feed %}
-                {% endblock feed %}
-            </div>
+            {% block feed %}
+            {% endblock feed %}
         </div>
         <div id="spinner" class="flex justify-center">{% include "partials/spinner.html" %}</div>
         <div id="lazy-load-trigger">

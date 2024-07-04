@@ -1,7 +1,6 @@
 {% load app_extras %}
 {% partialdef form %}
-<div id="buttons"
-     class="dark:bg-gruv-layer1 flex justify-end flex-row mt-4 space-x-2">
+<div id="buttons" class="flex justify-end flex-row mt-4 space-x-2">
     <div id="{{ item|element_id }}-btn-bar"
          class="flex flex-row mt-4 space-x-2">
         {% include "partials/interest.html#form" with item=post %}

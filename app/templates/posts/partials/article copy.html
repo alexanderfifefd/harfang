@@ -1,0 +1,87 @@
+{% load app_extras comments_extras static %}
+<div id="{{ post|element_id }}" class="dark:bg-gruv-layer1 flex flex-col">
+    <!-- Top Level: Author, Tags, etc. -->
+    <div class="flex justify-between items-center mb-2 ">
+        <div class="inline-flex rounded-md shadow-sm" role="group">
+            <button type="button"
+                    class="inline-flex items-center py-2 px-4 text-sm font-medium text-gray-900 bg-white border border-gray-200 rounded-s-lg hover:bg-gray-100 hover:text-blue-700 focus:z-10 focus:ring-2 focus:ring-blue-700 focus:text-blue-700 dark:bg-gray-800 dark:border-gray-700 dark:text-white dark:hover:text-white dark:hover:bg-gray-700 dark:focus:ring-blue-500 dark:focus:text-white">
+                <span class="p4 w-3 h-3 bg-interest-strong rounded-full mr-2"></span>
+                Subjekt
+            </button>
+            <button type="button"
+                    class="inline-flex items-center px-4 py-2 text-sm font-medium text-gray-900 bg-white border border-gray-200 rounded-e-lg hover:bg-gray-100 hover:text-blue-700 focus:z-10 focus:ring-2 focus:ring-blue-700 focus:text-blue-700 dark:bg-gray-800 dark:border-gray-700 dark:text-white dark:hover:text-white dark:hover:bg-gray-700 dark:focus:ring-blue-500 dark:focus:text-white">
+                <span class="p4 w-3 h-3 bg-interest-strong rounded-full mr-2"></span>
+                @Danby Choi
+            </button>
+        </div>
+        <button type="button"
+                class="inline-flex items-center px-4 py-2 text-sm font-medium text-gray-900 bg-white border border-gray-200 rounded-e-lg hover:bg-gray-100 hover:text-blue-700 focus:z-10 focus:ring-2 focus:ring-blue-700 focus:text-blue-700 dark:bg-gray-800 dark:border-gray-700 dark:text-white dark:hover:text-white dark:hover:bg-gray-700 dark:focus:ring-blue-500 dark:focus:text-white">
+            <svg class="w-6 h-6 text-gray-800 dark:text-white"
+                 aria-hidden="true"
+                 xmlns="http://www.w3.org/2000/svg"
+                 width="24"
+                 height="24"
+                 fill="none"
+                 viewBox="0 0 24 24">
+                <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="m16 14-4-4-4 4" />
+            </svg>
+            @Danby Choi
+        </button>
+        <div class="inline-flex rounded-md shadow-sm" role="group">
+            <button type="button"
+                    class="inline-flex items-center py-2 px-4 text-sm font-medium text-gray-900 bg-white border border-gray-200 rounded-s-lg hover:bg-gray-100 hover:text-blue-700 focus:z-10 focus:ring-2 focus:ring-blue-700 focus:text-blue-700 dark:bg-gray-800 dark:border-gray-700 dark:text-white dark:hover:text-white dark:hover:bg-gray-700 dark:focus:ring-blue-500 dark:focus:text-white">
+                <p>#</p>
+                <p>Pride</p>
+                <span class="p4 w-3 h-3 bg-interest-strong rounded-full mr-2"></span>
+            </button>
+            <button type="button"
+                    class="inline-flex items-center px-4 py-2 text-sm font-medium text-gray-900 bg-white border border-gray-200 rounded-e-lg hover:bg-gray-100 hover:text-blue-700 focus:z-10 focus:ring-2 focus:ring-blue-700 focus:text-blue-700 dark:bg-gray-800 dark:border-gray-700 dark:text-white dark:hover:text-white dark:hover:bg-gray-700 dark:focus:ring-blue-500 dark:focus:text-white">
+                <p>#</p>
+                <p>2024</p>
+                <span class="p4 w-3 h-3 bg-disinterest-strong rounded-full mr-2"></span>
+            </button>
+            <button type="button"
+                    class="inline-flex items-center px-4 py-2 text-sm font-medium text-gray-900 bg-white border border-gray-200 rounded-e-lg hover:bg-gray-100 hover:text-blue-700 focus:z-10 focus:ring-2 focus:ring-blue-700 focus:text-blue-700 dark:bg-gray-800 dark:border-gray-700 dark:text-white dark:hover:text-white dark:hover:bg-gray-700 dark:focus:ring-blue-500 dark:focus:text-white">
+                <p>#</p>
+                <p>2024</p>
+                <span class="p4 w-3 h-3 bg-disinterest-strong rounded-full mr-2"></span>
+            </button>
+            <button type="button"
+                    class="inline-flex items-center px-4 py-2 text-sm font-medium text-gray-900 bg-white border border-gray-200 rounded-e-lg hover:bg-gray-100 hover:text-blue-700 focus:z-10 focus:ring-2 focus:ring-blue-700 focus:text-blue-700 dark:bg-gray-800 dark:border-gray-700 dark:text-white dark:hover:text-white dark:hover:bg-gray-700 dark:focus:ring-blue-500 dark:focus:text-white">
+                <p>#</p>
+                <p>2024</p>
+                <span class="p4 w-3 h-3 bg-disinterest-strong rounded-full mr-2"></span>
+            </button>
+        </div>
+    </div>
+    <!-- Middle Level: Content, Title, Description, etc. -->
+    <article>
+        <header>
+            <a href="{% url 'posts:detail' post.id %}"
+               preload="mouseover"
+               class="no-anchor">{{ post.title }}</a>
+        </header>
+        <p class="text-sm muted">
+            <!--{% include "partials/profile_link.html" with user=post.user %}
+            {% points_count post %}
+            •
+
+            •
+            -->
+            <span class="whitespace-nowrap">
+                {% blocktranslate trimmed with age=post.submit_date|timesince %}
+                    {{ age }} ago
+                {% endblocktranslate %}
+            </span>
+            •
+            {% comment_count post %}
+        </p>
+    </article>
+    <!-- Bottom Level: Engagement Numbers -->
+    {% include "partials/button_bar.html#form" with item=post %}
+</div>
+<!--
+div id="{{ post|element_id }}"
+     class="flex flex-col my-4 card bg-white shadow-md rounded-lg overflow-hidden p-4">
+    <article max-w-full sm:max-w-md md:max-w-lg lg:max-w-xl xl:max-w-2xl>
+    -->
