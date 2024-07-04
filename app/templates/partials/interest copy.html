@@ -3,7 +3,7 @@
 <span>
     {% if item|interested_by:user %}
         <button id="{{ item|element_id }}-interest-btn"
-                class="inline-flex items-center px-4 py-2 text-sm font-medium text-gray-900 bg-white border border-gray-200 rounded-lg hover:bg-gray-100 hover:text-blue-700 focus:z-10 dark:bg-gray-800 dark:border-gray-700 dark:text-white dark:hover:text-white dark:hover:bg-gray-700 dark:focus:text-white"
+                class="flex items-center px-4 py-2 dark:text-gruv-fg dark:bg-gruv-layer2 rounded-lg shadow-md hover:bg-gray-100 focus:outline-none"
                 aria-label="Interest"
                 type="button"
                 hx-post="{{ item.get_interest_url }}"
@@ -16,7 +16,7 @@
         </button>
     {% else %}
         <button id="{{ item|element_id }}-interest-btn"
-                class="inline-flex items-center px-4 py-2 text-sm font-medium text-gray-900 bg-white border border-gray-200 rounded-lg hover:bg-gray-100 hover:text-blue-700 focus:z-10 dark:bg-gray-800 dark:border-gray-700 dark:text-white dark:hover:text-white dark:hover:bg-gray-700 dark:focus:text-white"
+                class="flex items-center px-4 py-2 dark:text-gruv-fg dark:bg-gruv-bg rounded-lg shadow-md hover:bg-gray-300 focus:outline-none"
                 aria-label="Interest"
                 type="button"
                 hx-post="{{ item.get_interest_url }}"

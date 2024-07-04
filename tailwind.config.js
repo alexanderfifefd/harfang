@@ -67,7 +67,7 @@ module.exports = {
           900: "#282828",
           950: "#1d2021",
 
-          bg: "#202020",
+          bg: "#111827",
           light: {
             layer1: "#FAFAFA",
             layer2: "#E0E0E0",
