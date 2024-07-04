@@ -2,9 +2,91 @@
 {% partialdef form %}
 <div id="{{ item|element_id }}-btn-bar"
      class="flex flex-row mt-2 space-x-2">
-    {% include "partials/interest.html#form" with item=post %}
-    {% include "partials/vote.html#form" with item=post %}
-    {% include "partials/disinterest.html#form" with item=post %}
+    <span>
+        {% if item|interested_by:user %}
+            <button id="{{ item|element_id }}-interest-btn"
+                    class="inline-flex items-center px-4 py-2 text-sm font-medium text-gray-900 bg-white border border-gray-200 rounded-lg hover:bg-gray-100 hover:text-blue-700 focus:z-10 dark:bg-gray-800 dark:border-gray-700 dark:text-white dark:hover:text-white dark:hover:bg-gray-700 dark:focus:text-white"
+                    aria-label="Interest"
+                    type="button"
+                    hx-post="{{ item.get_interest_url }}"
+                    hx-swap="outerHTML"
+                    hx-select="#{{ item|element_id }}-interest-btn"
+                    hx-select-oob="#{{ item|element_id }}-interest"
+                    {% if not user.is_authenticated %}disabled{% endif %}>
+                <span class="w-3 h-3 bg-interest-strong rounded-full mr-2"></span>
+                {{ item.interest }}
+            </button>
+        {% else %}
+            <button id="{{ item|element_id }}-interest-btn"
+                    class="inline-flex items-center px-4 py-2 text-sm font-medium text-gray-900 bg-white border border-gray-200 rounded-lg hover:bg-gray-100 hover:text-blue-700 focus:z-10 dark:bg-gray-800 dark:border-gray-700 dark:text-white dark:hover:text-white dark:hover:bg-gray-700 dark:focus:text-white"
+                    aria-label="Interest"
+                    type="button"
+                    hx-post="{{ item.get_interest_url }}"
+                    hx-swap="outerHTML"
+                    hx-select="#{{ item|element_id }}-interest-btn"
+                    hx-select-oob="#{{ item|element_id }}-interest"
+                    {% if not user.is_authenticated %}disabled{% endif %}>
+                <span class="w-3 h-3 bg-interest-weak rounded-full mr-2"></span>
+                {{ item.interest }}
+            </button>
+        {% endif %}
+    </span>    <span>
+    {% if item|voted_on_by:user %}
+        <button id="{{ item|element_id }}-upvote-btn"
+                class="inline-flex items-center px-4 py-2 text-sm font-medium text-gray-900 bg-white border border-gray-200 rounded-lg hover:bg-gray-100 hover:text-blue-700 focus:z-10 dark:bg-gray-800 dark:border-gray-700 dark:text-white dark:hover:text-white dark:hover:bg-gray-700 dark:focus:text-white"
+                aria-label="Upvote"
+                type="button"
+                hx-post="{{ item.get_vote_url }}"
+                hx-swap="outerHTML"
+                hx-select="#{{ item|element_id }}-upvote-btn"
+                hx-select-oob="#{{ item|element_id }}-upvote"
+                {% if not user.is_authenticated %}disabled{% endif %}>
+            <span class="w-3 h-3 bg-quality-strong rounded-full mr-2"></span>
+            {{ item.points }}
+        </button>
+    {% else %}
+        <button id="{{ item|element_id }}-upvote-btn"
+                class="inline-flex items-center px-4 py-2 text-sm font-medium text-gray-900 bg-white border border-gray-200 rounded-lg hover:bg-gray-100 hover:text-blue-700 focus:z-10 dark:bg-gray-800 dark:border-gray-700 dark:text-white dark:hover:text-white dark:hover:bg-gray-700 dark:focus:text-white"
+                aria-label="Upvote"
+                type="button"
+                hx-post="{{ item.get_vote_url }}"
+                hx-swap="outerHTML"
+                hx-select="#{{ item|element_id }}-upvote-btn"
+                hx-select-oob="#{{ item|element_id }}-upvote"
+                {% if not user.is_authenticated %}disabled{% endif %}>
+            <span class="w-3 h-3 bg-quality-weak rounded-full mr-2"></span>
+            {{ item.points }}
+        </button>
+    {% endif %}
+</span>    <span>
+{% if item|disinterested_by:user %}
+    <button id="{{ item|element_id }}-disinterest-btn"
+            class="inline-flex items-center px-4 py-2 text-sm font-medium text-gray-900 bg-white border border-gray-200 rounded-lg hover:bg-gray-100 hover:text-blue-700 focus:z-10 dark:bg-gray-800 dark:border-gray-700 dark:text-white dark:hover:text-white dark:hover:bg-gray-700 dark:focus:text-white"
+            aria-label="Disinterest"
+            type="button"
+            hx-post="{{ item.get_disinterest_url }}"
+            hx-swap="outerHTML"
+            hx-select="#{{ item|element_id }}-disinterest-btn"
+            hx-select-oob="#{{ item|element_id }}-disinterest"
+            {% if not user.is_authenticated %}disabled{% endif %}>
+        <span class="p4 w-3 h-3 bg-disinterest-strong rounded-full mr-2"></span>
+        {{ item.disinterest }}
+    </button>
+{% else %}
+    <button id="{{ item|element_id }}-disinterest-btn"
+            class="inline-flex items-center px-4 py-2 text-sm font-medium text-gray-900 bg-white border border-gray-200 rounded-lg hover:bg-gray-100 hover:text-blue-700 focus:z-10 dark:bg-gray-800 dark:border-gray-700 dark:text-white dark:hover:text-white dark:hover:bg-gray-700 dark:focus:text-white"
+            aria-label="Disinterest"
+            type="button"
+            hx-post="{{ item.get_disinterest_url }}"
+            hx-swap="outerHTML"
+            hx-select="#{{ item|element_id }}-disinterest-btn"
+            hx-select-oob="#{{ item|element_id }}-disinterest"
+            {% if not user.is_authenticated %}disabled{% endif %}>
+        <span class="p4 w-3 h-3 bg-disinterest-weak rounded-full mr-2"></span>
+        {{ item.disinterest }}
+    </button>
+{% endif %}
+</span>
 </div>
 {% endpartialdef %}
 {% partial form %}
