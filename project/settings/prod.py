@@ -9,6 +9,8 @@ CSRF_TRUSTED_ORIGINS = os.environ.get("CSRF_TRUSTED_ORIGINS", "").split(",")
 CSRF_COOKIE_SECURE = True
 SESSION_COOKIE_SECURE = True
 
+INSTALLED_APPS.append("analytics")
+
 # Redis cache configuration
 CACHES = {
     "default": {
@@ -36,6 +38,14 @@ DATABASES = {
         "OPTIONS": {},
     },
 }
+
+# settings.py
+CELERY_BROKER_URL = "redis://redis:6379/0"
+CELERY_RESULT_BACKEND = "redis://redis:6379/0"
+CELERY_ACCEPT_CONTENT = ["json"]
+CELERY_TASK_SERIALIZER = "json"
+CELERY_RESULT_SERIALIZER = "json"
+CELERY_TIMEZONE = "UTC"
 
 # Static files
 STATIC_URL = "/static/"

@@ -14,6 +14,9 @@ from app.utils import get_page
 from .forms import PostForm
 from .models import Post, PostVote, PostInterest, PostDisinterest
 
+from analytics.utils import log_event
+from analytics.models import EventType
+
 
 def top(request, range="day"):
     if range == "day":
@@ -190,6 +193,8 @@ def vote(request, pk):
             return HttpResponseForbidden(e)
 
     post.refresh_from_db()
+
+    log_event(request, event_type=EventType.PAGE_VIEW, metadata={"vote": "done"})
 
     return TemplateResponse(
         request, "partials/vote.html", {"item": post}, status=status

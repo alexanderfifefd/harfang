@@ -1,0 +1,4 @@
+# analytics/signals.py
+from django.dispatch import Signal
+
+event_logged = Signal()

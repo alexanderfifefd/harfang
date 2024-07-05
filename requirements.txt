@@ -17,3 +17,4 @@ pymdown-extensions==10.5
 django-compressor
 django-redis
 django-clickhouse-backend
+celery
