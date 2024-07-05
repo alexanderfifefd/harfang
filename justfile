@@ -5,8 +5,8 @@ css:
     npx tailwindcss -i static/css/input.css -o static/css/output.css --watch
 
 run-containers:
-    podman build -t harfang -f Dockerfile .
-    podman-compose up -d
+    docker build -t harfang -f Dockerfile .
+    docker-compose up -d
 
 migrate:
     python3 manage.py makemigrations

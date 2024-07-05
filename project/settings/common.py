@@ -1,3 +1,4 @@
+# common.py
 import os
 import pymdownx.emoji
 from pathlib import Path
