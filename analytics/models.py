@@ -6,10 +6,11 @@ from clickhouse_backend import models
 
 class EventType(IntegerChoices):
     PAGE_VIEW = 1
-    CLICK = 2
-    FORM_SUBMISSION = 3
-    LOGIN = 4
-    SIGNUP = 5
+    PARTIAL_VIEW = 2
+    CLICK = 3
+    FORM_SUBMISSION = 4
+    LOGIN = 5
+    SIGNUP = 6
     CUSTOM = 99
 
 
@@ -22,7 +23,8 @@ class Event(models.ClickhouseModel):
     user_agent = models.StringField(max_length=1024, default="", low_cardinality=True)
     ip_address = models.GenericIPAddressField(default="::")
     event_time = models.DateTime64Field(default=timezone.now)
-    metadata = models.JSONField(default=dict)
+    # metadata = models.JSONField(default=dict)
+    metadata = models.StringField(max_length=255, default="")
     created_at = models.DateTime64Field(auto_now_add=True)
 
     class Meta:

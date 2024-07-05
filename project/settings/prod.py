@@ -22,6 +22,8 @@ CACHES = {
     }
 }
 
+DATABASE_ROUTERS = ["project.settings.dbrouters.ClickHouseRouter"]
+
 # ClickHouse database configuration
 DATABASES = {
     "default": {

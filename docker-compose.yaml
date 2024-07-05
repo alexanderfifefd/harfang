@@ -28,7 +28,7 @@ services:
 
   celery:
     image: harfang:latest
-    command: celery -A your_project_name worker --loglevel=info
+    command: celery -A analytics worker --loglevel=info
     volumes:
       - .:/usr/src/app:Z
     env_file: .env
