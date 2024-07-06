@@ -4,9 +4,21 @@ run:
 css:
     npx tailwindcss -i static/css/input.css -o static/css/output.css --watch
 
-run-containers:
+run-c:
     docker build -t harfang -f Dockerfile .
     docker-compose up -d
+
+down-c:
+    docker-compose down
+
+migrate-c:
+    docker-compose exec app python manage.py makemigrations
+    docker-compose exec app python manage.py migrate
+    docker-compose exec app python manage.py migrate --database clickhouse
+
+clickhouse:
+    docker-compose exec -it clickhouse clickhouse-client
+
 
 migrate:
     python3 manage.py makemigrations
