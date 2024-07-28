@@ -82,9 +82,3 @@ class Event(models.ClickhouseModel):
                 granularity=4,
             ),
         ]
-        constraints = [
-            CheckConstraint(
-                check=Q(engagement_score__in=[-1, 1, None]),
-                name="valid_engagement_score",
-            )
-        ]

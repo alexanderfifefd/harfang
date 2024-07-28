@@ -28,7 +28,7 @@ services:
 
   celery:
     image: harfang:latest
-    command: celery -A analytics worker --loglevel=info
+    command: celery -A project worker --loglevel=info
     volumes:
       - .:/usr/src/app:Z
     env_file: .env
@@ -49,6 +49,17 @@ services:
       - "8000:80"
     networks:
       - frontend
+      - backend
+
+  flower:
+    image: mher/flower:latest
+    command: celery --broker=redis://redis:6379/0 flower
+    ports:
+      - "5555:5555"
+    depends_on:
+      - redis
+      - celery
+    networks:
       - backend
 
 networks:

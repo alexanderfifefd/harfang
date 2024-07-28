@@ -17,6 +17,9 @@ SESSION_COOKIE_SECURE = False
 #     },
 # }
 
+# INSTALLED_APPS.append("analytics")
+
+
 ENABLE_DEBUG_TOOLBAR = True
 
 if DEBUG:

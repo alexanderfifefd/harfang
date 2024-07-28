@@ -1,17 +1,20 @@
 run:
     python3 manage.py runserver
 
+open:
+    open "http://localhost:8000"
+
 css:
     npx tailwindcss -i static/css/input.css -o static/css/output.css --watch
 
-run-c:
+up:
     docker build -t harfang -f Dockerfile .
     docker-compose up -d
 
-down-c:
+down:
     docker-compose down
 
-migrate-c:
+c-migrate:
     docker-compose exec app python manage.py makemigrations
     docker-compose exec app python manage.py migrate
     docker-compose exec app python manage.py migrate --database clickhouse
@@ -19,6 +22,8 @@ migrate-c:
 clickhouse:
     docker-compose exec -it clickhouse clickhouse-client
 
+flower:
+    open "http://localhost:5555/"
 
 migrate:
     python3 manage.py makemigrations

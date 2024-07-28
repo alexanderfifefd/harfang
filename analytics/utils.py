@@ -1,9 +1,15 @@
 # analytics/utils.py
 from .signals import event_logged
-from .models import EventType
+from .models import EventType, EngagementType
 
 
-def log_event(request, event_type=EventType.CUSTOM, metadata=None):
+def log_event(
+    request,
+    event_type=EventType.CUSTOM,
+    engagement_type=EngagementType.NONE,
+    metadata=None,
+    engagement_score=None,
+):
     if metadata is None:
         metadata = {}
 
@@ -19,9 +25,11 @@ def log_event(request, event_type=EventType.CUSTOM, metadata=None):
         user_id=user_id,
         session_id=session_id,
         event_type=event_type,
+        engagement_type=engagement_type,
         url=url,
         referrer=referrer,
         user_agent=user_agent,
         ip_address=ip_address,
         metadata=metadata,
+        engagement_score=engagement_score,
     )
